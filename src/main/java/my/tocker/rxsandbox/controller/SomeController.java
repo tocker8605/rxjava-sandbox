@@ -11,7 +11,7 @@ import java.util.List;
 @RestController("/test")
 public class SomeController {
 
-    ReactiveService reactiveService;
+    private ReactiveService reactiveService;
 
     @Autowired
     public SomeController(ReactiveService reactiveService) {
@@ -20,7 +20,7 @@ public class SomeController {
 
     @GetMapping
     public List<SomeObject> response() {
-        return reactiveService.fetchSomeObject();
+        return reactiveService.fetchSomeObject_1();
     }
 
 }
