@@ -4,11 +4,13 @@ import my.tocker.rxsandbox.dto.SomeObject;
 import my.tocker.rxsandbox.service.ReactiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/test")
+@RestController
+@RequestMapping("/reactive")
 public class SomeController {
 
     private ReactiveService reactiveService;
@@ -19,7 +21,7 @@ public class SomeController {
     }
 
     @GetMapping
-    public List<SomeObject> response() {
+    public List<SomeObject> responseReactive() {
         return reactiveService.fetchSomeObject_1();
     }
 

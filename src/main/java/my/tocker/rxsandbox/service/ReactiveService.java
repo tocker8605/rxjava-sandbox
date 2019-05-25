@@ -36,10 +36,9 @@ public class ReactiveService {
 
     public List<SomeObject> fetchSomeObject_1() {
         Observable<SomeObject> obs = Observable.merge(observable1(), observable2());
-
         List<SomeObject> soList = new ArrayList<>();
 
-        // !! 헐 안기다리네
+        // !! 안기다림.. 당연한거지
         obs.subscribe(so -> soList.add(so));
 
         return soList;
@@ -49,7 +48,7 @@ public class ReactiveService {
         return Observable.create(s -> {
             threadPoolTaskExecutor.execute(() -> {
                 try {
-                    log.debug("OB1 THREAD {}", Thread.currentThread());
+                    log.info("OB1 THREAD {}", Thread.currentThread());
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {log.error("error");}
                 s.onNext(DATAMAP.get("1"));
@@ -64,7 +63,7 @@ public class ReactiveService {
         return Observable.create(s -> {
             threadPoolTaskExecutor.execute(() -> {
                 try {
-                    log.debug("OB2 THREAD {}", Thread.currentThread());
+                    log.info("OB2 THREAD {}", Thread.currentThread());
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {log.error("error");}
                 s.onNext(DATAMAP.get("2"));
